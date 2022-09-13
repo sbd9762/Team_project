@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <section class="section-wrapper slide">
 	<h2 class="section-name">${param.sectionName}</h2>
-	<link rel="stylesheet" type="text/css" href="css/article.css">
 	<article class="product-wrapper" data-product="1">
 		<a href="content.do" class="product-link">
 			<div class="thumbnail-wrapper">
