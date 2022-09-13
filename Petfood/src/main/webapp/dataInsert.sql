@@ -1,0 +1,1 @@
+﻿insert into admin values('administrator', 'test', '관리자', '1');

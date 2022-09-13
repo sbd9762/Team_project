@@ -6,23 +6,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="#">
 		<%@ include file="common-css.jsp"%>
-		<%@ include file="common-js.jsp"%>
 		<link rel="stylesheet" type="text/css" href="css/banner.css">
 		<link rel="stylesheet" type="text/css" href="css/slide.css">
 		<link rel="stylesheet" type="text/css" href="css/sidebar.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/section.css">
 		<link rel="stylesheet" type="text/css" href="css/article.css">
+		<%@ include file="common-js.jsp"%>
 		<title>${title}</title>
 	</head>
 	<body class="body">
 		<jsp:include page="header.jsp">
 			<jsp:param name="category" value="${category}"/>
 		</jsp:include>
-		<jsp:include page="sidebar.jsp">
-			<jsp:param name="isLogin" value="${isLogin}"/>
-		</jsp:include>
-		<script src="js/sidebar.js"></script>
+		<jsp:include page="sidebar.jsp"/>
+		<script type="text/javascript" src="js/sidebar.js"></script>
 		<script type="text/javascript" src="js/modal.js"></script>
 		<main class="content">
 			<jsp:include page="banner-slide.jsp">

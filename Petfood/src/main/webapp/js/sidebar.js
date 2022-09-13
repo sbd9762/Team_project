@@ -1,8 +1,7 @@
 /* SHIN BADA 220825 */
 /* Javascript reponsible for sidebar function  */
 
-$(function() {
-
+$(function () {
 	/* Constant */
 
 	// Time of Animation duration.
@@ -44,8 +43,8 @@ $(function() {
 	let isHiding;
 
 	/* Function */
-	// Hide button.
-	function hide(e, CLASS) {
+	// Hide element.
+	const hideElement = (e, CLASS) => {
 		// Debounce.
 		if (hideTimer) { clearTimeout(hideTimer); }
 
@@ -57,40 +56,40 @@ $(function() {
 			}
 		}, DURATION);
 	}
-
-	// Show button.
-	function show(e, CLASS) {
+	
+	// Show element.
+	const showElement = (e, CLASS) => {
 		e.removeClass(CLASS).css('visibility', '');
 	}
 
-	// Hide and show button according to the scroll position.
-	function calcScrollButtonHide() {
+	// Hide and show element according to the scroll position.
+	const calcScrollButtonHide = () => {
 		if (!$topBtn.hasClass(HIDE_BTN) && nowHeightTop < limitBtn.up) {
-			hide($topBtn, HIDE_BTN);
+			hideElement($topBtn, HIDE_BTN);
 			
 			// Move to the top as much as element's height and margin.
 			$bottomBtn.css('transform', 'translateY(calc(-100% - 10px))');
 		} else if ($topBtn.hasClass(HIDE_BTN) && nowHeightTop > limitBtn.up) {
-			show($topBtn, HIDE_BTN);
+			showElement($topBtn, HIDE_BTN);
 			$bottomBtn.css('transform', '');
 		}
 		
 		if (!$bottomBtn.hasClass(HIDE_BTN) && nowHeightBottom > limitBtn.down) {
-			hide($bottomBtn, HIDE_BTN)
+			hideElement($bottomBtn, HIDE_BTN)
 		} else if ($bottomBtn.hasClass(HIDE_BTN) && nowHeightBottom < limitBtn.down) {
-			show($bottomBtn, HIDE_BTN);
+			showElement($bottomBtn, HIDE_BTN);
 		}
 	}
 
 	// Calculate sticky DOM's state based on the scroll position.
-	function calcSideBarHide() {
+	const calcSideBarHide = () => {
 		calcScrollButtonHide();
 		if (!$sideBar.hasClass(HIDE_BAR) && nowHeightTop < limitBar.up) {
-			hide($sideBar, HIDE_BAR);
+			hideElement($sideBar, HIDE_BAR);
 
 			isHiding = setTimeout(function () { isHiding = null }, DURATION);
 		} else if ($sideBar.hasClass(HIDE_BAR) && nowHeightTop > limitBar.up) {
-			show($sideBar, HIDE_BAR);
+			showElement($sideBar, HIDE_BAR);
 			
 			// Reduce overloading by animation called by eventlistener, And optimize it.
 			calcScrollButtonHide();
@@ -102,7 +101,7 @@ $(function() {
 	}
 
 	// Reinitialize Variable.
-	function initVaribale() {
+	const initVaribale = () => {
 		allHeight = $(document).height();
 		limitBar = { up: allHeight / DIVIDE, down: allHeight };
 		limitDiff = allHeight - limitBar.up;
