@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import action.CommandAction;
-import dao.AdminDao;
+import dao.AdminDAO;
 
 public class AdminLoginAction implements CommandAction {
 
@@ -16,7 +16,7 @@ public class AdminLoginAction implements CommandAction {
 		String admin_id = request.getParameter("admin_id");
 		String admin_password = request.getParameter("admin_password");
 		
-		boolean isAdmin = new AdminDao().login(admin_id, admin_password);
+		boolean isAdmin = new AdminDAO().login(admin_id, admin_password);
 		
 		if (isAdmin) {
 			HttpSession session = request.getSession();

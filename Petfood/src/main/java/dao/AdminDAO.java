@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import db.DBConnectionMgr;
 
-public class AdminDao {
+public class AdminDAO {
 private DBConnectionMgr pool = null;
 	
 	private Connection con = null;
@@ -15,7 +15,7 @@ private DBConnectionMgr pool = null;
 	private ResultSet rs = null;
 	private String sql = "";
 	
-	public AdminDao() {
+	public AdminDAO() {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		} catch(Exception e) {
