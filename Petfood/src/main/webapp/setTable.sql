@@ -35,15 +35,15 @@ CREATE TABLE `zipcode` (
 CREATE TABLE `product` (
  `num` int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
  `name` varchar(40) NOT NULL,
- `thumbnail` varchar(20) NOT NULL,
+ `thumbnail` varchar(40) NOT NULL,
  `price_before` int unsigned NOT NULL DEFAULT 0,
  `price` int unsigned NOT NULL DEFAULT 0,
  `views` int unsigned NOT NULL DEFAULT 0,
  `amount` int unsigned NOT NULL DEFAULT 0,
  `content` TEXT NOT NULL,
  `count_review` int unsigned NOT NULL DEFAULT 0,
- `brand_num` int unsigned NOT NULL,
  `company_num` int unsigned NOT NULL,
+ `brand_num` int unsigned NOT NULL,
  `category_num` int unsigned NULL
 );
 
@@ -99,19 +99,19 @@ CREATE TABLE `order_ship` (
  `change_state` varchar(10) NULL
 );
 
-CREATE TABLE `brand` (
+CREATE TABLE `company` (
  `num` int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
  `name` varchar(20) NOT NULL
 );
 
-CREATE TABLE `company` (
+CREATE TABLE `brand` (
  `num` int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
  `name` varchar(20) NOT NULL,
  `ceo_name` varchar(10) NOT NULL,
  `reg_num` int unsigned NOT NULL,
  `sector` varchar(100) NOT NULL,
  `tel` varchar(11) NOT NULL,
- `address` varchar(20) NOT NULL
+ `address` varchar(50) NOT NULL
 );
 
 CREATE TABLE `review` (
@@ -175,17 +175,17 @@ ALTER TABLE `views` ADD CONSTRAINT `PK_VIEWS` PRIMARY KEY (
  `product_num`
 );
 
-ALTER TABLE `product` ADD CONSTRAINT `FK_brand_TO_product_1` FOREIGN KEY (
- `brand_num`
-)
-REFERENCES `brand` (
- `num`
-);
-
 ALTER TABLE `product` ADD CONSTRAINT `FK_company_TO_product_1` FOREIGN KEY (
  `company_num`
 )
 REFERENCES `company` (
+ `num`
+);
+
+ALTER TABLE `product` ADD CONSTRAINT `FK_brand_TO_product_1` FOREIGN KEY (
+ `brand_num`
+)
+REFERENCES `brand` (
  `num`
 );
 
